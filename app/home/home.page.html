@@ -1,14 +1,56 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar >
     <ion-title>
-      Ionic Blank
+      SAP personaliy quiz, which sap product are you?
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+  
+    <ion-card *ngFor = "let card of cardList"> 
+      <ion-card-header>
+        <!-- <ion-card-subtitle></ion-card-subtitle> -->
+        <ion-card-title>{{card.title}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-radio-group name="auto">
+            <!-- <ion-list-header>Auto Manufacturers</ion-list-header> -->
+            <ion-item>
+              <ion-label>{{card.choices[0]}}</ion-label>
+              <ion-radio value="1" (ionSelect) = "card.checked = card.choices[0]"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>{{card.choices[1]}} </ion-label>
+              <ion-radio value="2" (ionSelect) = "card.checked = card.choices[1]"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf = "card.choices[2] !=null">
+              <ion-label>{{card.choices[2]}}</ion-label>
+              <ion-radio value="3" (ionSelect) = "card.checked = card.choices[2]"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf = "card.choices[3] !=null">
+              <ion-label>{{card.choices[3]}}</ion-label>
+              <ion-radio value="4" (ionSelect) = "card.checked = card.choices[3]"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf = "card.choices[4] !=null">
+              <ion-label>{{card.choices[4]}}</ion-label>
+              <ion-radio value="5" (ionSelect) = "card.checked = card.choices[4]"></ion-radio>
+            </ion-item>
+            <ion-item *ngIf = "card.choices[5] !=null">
+                <ion-label>{{card.choices[5]}}</ion-label>
+                <ion-radio value="6" (ionSelect) = "card.checked = card.choices[5]"></ion-radio>
+              </ion-item>
+          </ion-radio-group>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+    <div class = "submit">
+    <ion-button (click)="submit()">
+      Submit
+    </ion-button>
+  </div>
+    
   </div>
 </ion-content>
